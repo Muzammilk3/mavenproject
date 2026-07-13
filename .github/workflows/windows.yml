@@ -1,0 +1,20 @@
+name: mvn job on windows
+on:
+  push:
+    branches: ["master"]
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+     - name: collecting the src code
+       uses: actions/checkout@v7.0.0
+       
+     - name: java version 
+       run: java --version
+
+     - name: maven version 
+       run: mvn --version
+         
+     - name: compiling the mvn src code
+       run: mvn package
