@@ -1,20 +1,20 @@
-name: mvn pipeline
+name: mvn job on windows
 on:
   push:
     branches: ["master"]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
      - name: collecting the src code
        uses: actions/checkout@v7.0.0
        
-     - name: installing the java 
-       uses: actions/setup-java@v5.5.0
-       with:
-         java-version: '21'
-         distribution: 'temurin'
+     - name: java version 
+       run: java --version
+
+     - name: maven version 
+       run: mvn --version
          
      - name: compiling the mvn src code
        run: mvn package
